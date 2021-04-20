@@ -1,0 +1,38 @@
+.productCardContainer {
+  border: 1px solid red;
+  margin: 2rem;
+  border-radius: 25px;
+}
+.heartBtn {
+  margin-left: 4rem;
+  color: #ffb6c1;
+  cursor: pointer;
+}
+.heartBtn:checked {
+  color: #f45b5b;
+  animation: like 0.4s ease-in-out;
+}
+
+.heartBtn::after {
+  content: "❤";
+  font-size: 2rem;
+  position: relative;
+  /*   border: 1px solid blue; */
+  top: -1rem;
+  left: -0.5rem;
+}
+
+@keyframes like {
+  0% {
+    transform: scale(0.75);
+  }
+  40% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(0.75);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
