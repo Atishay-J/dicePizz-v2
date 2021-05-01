@@ -7,7 +7,7 @@ productRouter.get("/products", async (req, res) => {
     const products = await Product.find({});
     res.status(200).send(products);
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send("Error while fetching products");
   }
 });
 
