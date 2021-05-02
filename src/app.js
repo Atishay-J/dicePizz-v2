@@ -1,11 +1,13 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const fillProductsCollection = require("./utils/databaseInit");
 const productRouter = require("./routers/productRouter");
 
 require("dotenv").config();
 require("./database/conn");
 
+app.use(cors());
 app.use(express.json());
 app.use("/api", productRouter);
 
