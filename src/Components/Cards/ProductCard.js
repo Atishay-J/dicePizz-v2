@@ -47,6 +47,7 @@ export default function ProductCard({ item, reducerState, dispatch }) {
       </div>
       <div className="prodInfoWrapper">
         <h1 className="prodCardTitle">{item.title}</h1>
+
         <div className="productPriceWrapper">
           <p className="prodCardPrice"> ₹{item.price}</p>
           <div className="isVegContainer">
@@ -65,7 +66,6 @@ export default function ProductCard({ item, reducerState, dispatch }) {
             starsCol="#dadada"
           />
         </div>
-
         <div className="prodCardBtnsWrapper">
           {reducerState.cart.find(
             (itemInCart) => itemInCart.id === item._id

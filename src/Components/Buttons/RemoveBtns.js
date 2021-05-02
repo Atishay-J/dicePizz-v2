@@ -1,7 +1,7 @@
 import { useCart } from "../Context/CartContext";
 
 export default function RemoveBtn({ removeFrom, item }) {
-  const { state, dispatch } = useCart();
+  const { dispatch } = useCart();
 
   console.log("Item from favroutites", item);
 

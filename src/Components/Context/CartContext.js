@@ -16,8 +16,6 @@ const initState = {
 };
 
 const cartReducer = (state, action) => {
-  console.log("Dispatch worked");
-  console.log("CARt context state", state);
   switch (action.type) {
     case "ADD_TO_CART":
       return {
@@ -104,41 +102,6 @@ const cartReducer = (state, action) => {
     }
 
     case "HANDLE_DISCOUNT":
-      // console.log(
-      //   "condition",
-      //   action.payload.cartPrice < state.discount.discountAmt
-      // );
-      // if (action.payload.cartPrice < state.discount.discountAmt) {
-      //   console.log("INSIDE 1ST IF");
-      //   return {
-      //     ...state,
-      //     discount: {
-      //       ...state.discount,
-      //       discountMsg: "Cart Price should be more",
-      //       discountAmt: 0,
-      //       giveDiscount: false,
-      //       discountInput: action.payload.couponInput,
-      //     },
-      //   };
-      // }
-      // if (
-      //   action.payload.couponInput.toLowerCase() ===
-      //   state.discount.discountCode.toLowerCase()
-      // ) {
-      //   return {
-      //     ...state,
-      //     discount: {
-      //       ...state.discount,
-      //       discountMsg: "Coupon Applied",
-      //       discountAmt: 800,
-      //       giveDiscount: true,
-      //       discountInput: action.payload.couponInput,
-      //     },
-      //   };
-      // }
-
-      // state.discount.discountInput = action.payload.couponInput;
-
       state = { ...state, discount: { ...state.discount, discountAmt: 50 } };
 
       if (
@@ -182,16 +145,7 @@ const cartReducer = (state, action) => {
           },
         };
       }
-    // return {
-    //   ...state,
-    //   discount: {
-    //     ...state.discount,
-    //     discountInput: action.payload.couponInput,
-    //     // discountAmt: 0,
-    //     giveDiscount: false,
-    //     discountMsg: "Invalid Coupon",
-    //   },
-    // }
+      break;
 
     default:
       return state;

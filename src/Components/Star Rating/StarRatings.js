@@ -9,11 +9,11 @@ export default function StarRatings({ starred, stars, starredCol, starsCol }) {
   }
   return (
     <div className="StarRatingsContainer">
-      {starsArr.map((item) => {
+      {starsArr.map((item, index) => {
         if (item < starred) {
-          return <StarSharpIcon style={{ color: starredCol }} />;
+          return <StarSharpIcon style={{ color: starredCol }} key={index} />;
         }
-        return <StarSharpIcon style={{ color: starsCol }} />;
+        return <StarSharpIcon style={{ color: starsCol }} key={index} />;
       })}
     </div>
   );

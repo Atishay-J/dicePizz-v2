@@ -1,4 +1,3 @@
-import { useCart } from "../Context/CartContext";
 import { IncDecBtn, RemoveBtn, MoveBtn, StarRatings } from "../index";
 import "./HorizontalCard.css";
 
@@ -8,8 +7,6 @@ export default function HorizontalCard({
   showRemoveBtn,
   showMoveToCart,
 }) {
-  const { dispatch } = useCart();
-
   return (
     <div className="horizontalCardContainer">
       <img className="horizontalCardImg" src={item.img} alt="pizza" />

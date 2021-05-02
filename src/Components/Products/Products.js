@@ -1,11 +1,9 @@
-import { data } from "../../Data";
 import { useFilter } from "../Context/FilterContext";
 import React, { useState } from "react";
 
 import {
   ProductCard,
   useCart,
-  Filters,
   FilterToggleBtn,
   FilterRadioBtns,
   useProducts,
@@ -13,11 +11,15 @@ import {
 import "./products.css";
 
 import SwapVertSharpIcon from "@material-ui/icons/SwapVertSharp";
+import SkeletonCard from "../Cards/SkeletonCard";
 
 export default function Products() {
   const value = useCart();
   const { apiProductData } = useProducts();
   const { state } = useFilter();
+
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  let dropDownClass = `dropDownList ${dropdownVisible && "showDropdownList"}`;
 
   const toggleVeg = (productsData, isVeg) => {
     if (isVeg) {
@@ -52,10 +54,6 @@ export default function Products() {
     }
   };
 
-  const [dropdownVisible, setDropdownVisible] = useState(false);
-
-  let dropDownClass = `dropDownList ${dropdownVisible && "showDropdownList"}`;
-
   const sortByRelevances = (sortedData, sortBy) => {
     if (sortBy === "relevance") {
       return [...sortedData];
@@ -71,12 +69,6 @@ export default function Products() {
     state.sortByRelevance
   );
 
-  //************************************ */
-
-  console.log("State data", apiProductData);
-  console.log("sorted by relevance ", sortedByRelevance);
-
-  //************************************ */
   return (
     <>
       <div className="productsMainWrapper">
@@ -126,9 +118,9 @@ export default function Products() {
         <div className="productsWrapper">
           {/* <h1>I am products</h1> */}
 
-          {sortedByRelevance.length <= 0 ? (
-            <h2>Loading...</h2>
-          ) : (
+          {sortedByRelevance.length <= 0 && <SkeletonCard />}
+
+          {sortedByRelevance.length > 0 &&
             sortedByRelevance.map((item) => (
               <li className="listStyleNone productList" key={item._id}>
                 <ProductCard
@@ -137,8 +129,7 @@ export default function Products() {
                   dispatch={value.dispatch}
                 />
               </li>
-            ))
-          )}
+            ))}
         </div>
       </div>
     </>
